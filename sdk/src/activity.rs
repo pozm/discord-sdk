@@ -80,10 +80,10 @@ impl Assets {
     /// limited to 128 bytes and will be truncated if longer than that.
     pub fn large(mut self, key: impl Into<String>, text: Option<impl Into<String>>) -> Self {
         let key = key.into();
-        if key.len() > 32 && (!key.starts_with("http://") || !key.starts_with("https://")) {
-            tracing::warn!("Large Image Key '{}' is invalid, disregarding", key);
-            return self;
-        }
+        // if key.len() > 32 && (!key.starts_with("http://") || !key.starts_with("https://")) {
+        //     tracing::warn!("Large Image Key '{}' is invalid, disregarding", key);
+        //     return self;
+        // }
 
         self.large_image = Some(key);
         self.large_text = truncate(text, "Large Image Text");
@@ -97,10 +97,10 @@ impl Assets {
     /// limited to 128 bytes and will be truncated if longer than that.
     pub fn small(mut self, key: impl Into<String>, text: Option<impl Into<String>>) -> Self {
         let key = key.into();
-        if key.len() > 32 && (!key.starts_with("http://") || !key.starts_with("https://")) {
-            tracing::warn!("Small Image Key '{}' is invalid, disregarding", key);
-            return self;
-        }
+        // if key.len() > 32 && (!key.starts_with("http://") || !key.starts_with("https://")) {
+        //     tracing::warn!("Small Image Key '{}' is invalid, disregarding", key);
+        //     return self;
+        // }
 
         self.small_image = Some(key);
         self.small_text = truncate(text, "Small Image Text");
